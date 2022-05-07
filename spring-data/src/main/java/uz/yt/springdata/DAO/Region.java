@@ -4,10 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -22,4 +20,13 @@ public class Region {
     private String nameru;
     private String nameeng;
 
+    @OneToMany(mappedBy = "region")
+    private List<District> district;
+
+    public Region(Integer id, String nameuz, String nameru, String nameeng) {
+        this.id = id;
+        this.nameuz = nameuz;
+        this.nameru = nameru;
+        this.nameeng = nameeng;
+    }
 }

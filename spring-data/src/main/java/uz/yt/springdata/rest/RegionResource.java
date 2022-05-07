@@ -16,16 +16,16 @@ import java.util.List;
 public class RegionResource {
     private final RegionService regionService;
     //sout all info in region
-    @GetMapping("getall")
+    @GetMapping("get-all")
     public ResponseDTO<List<RegionDTO>> getAll()
     {
-        return regionService.getall();
+        return regionService.getAll();
     }
 
 
     //sout region by id
-    @GetMapping("getbyid")
-    public ResponseDTO<RegionDTO>getAll(@RequestParam Integer id) {return regionService.getoneByid(id);}
+    @GetMapping("get-by-id")
+    public ResponseDTO<RegionDTO>getAll(@RequestParam Integer id) {return regionService.getOneById(id);}
 
     //add info in region
     @PostMapping("add")

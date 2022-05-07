@@ -16,17 +16,17 @@ public class PublisherResource {
     @GetMapping("getall")
     public ResponseDTO<List<PublisherDTO>> getall()
     {
-        return publisherServic.getall();
+        return publisherServic.getAll();
     }
     @GetMapping("getbyid")
     public ResponseDTO<PublisherDTO> getall(@RequestParam Integer id)
     {
-        return publisherServic.getoneByid(id);
+        return publisherServic.getOneById(id);
     }
     @PostMapping("add")
     public ResponseDTO<PublisherDTO> add(@RequestBody PublisherDTO publisherDTO)
     {
-        return publisherServic.addpublisher(publisherDTO);
+        return publisherServic.addPublisher(publisherDTO);
     }
         @PutMapping("update")
     public ResponseDTO<PublisherDTO> update (@RequestBody PublisherDTO publisherDTO)

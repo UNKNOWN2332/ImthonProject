@@ -7,6 +7,7 @@ import uz.yt.springdata.DTO.BookDTO;
 import uz.yt.springdata.DTO.ResponseDTO;
 import uz.yt.springdata.service.BookService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -15,7 +16,7 @@ import java.util.List;
 public class BookResource {
     private final BookService bookService;
 
-    @GetMapping("/getall")
+    @GetMapping("/get-all")
     public ResponseDTO<Page<BookDTO>> getAll(@RequestParam Integer size, @RequestParam Integer page)
     {
         return bookService.getAllBooks(size,page);
@@ -23,7 +24,7 @@ public class BookResource {
     @PostMapping("/add")
     public ResponseDTO<BookDTO> add(@RequestBody BookDTO bookDTO)
     {
-        return bookService.addnew(bookDTO);
+        return bookService.addNew(bookDTO);
     }
     @PutMapping("/update")
     public ResponseDTO<BookDTO> update_book(@RequestBody BookDTO bookDTO)
@@ -34,5 +35,11 @@ public class BookResource {
     public ResponseDTO<BookDTO> delete(@RequestParam Integer id)
     {
         return bookService.delete(id);
+    }
+
+    @GetMapping("get-by-cost")
+    public ResponseDTO<Page<BookDTO>> getByCost(@RequestParam(defaultValue = "0") Integer page , @RequestParam(defaultValue = "5    ") Integer size, @RequestParam Double cost)
+    {
+        return bookService.getByCost(page,size,cost);
     }
 }

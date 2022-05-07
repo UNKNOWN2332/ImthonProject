@@ -8,7 +8,7 @@ import uz.yt.springdata.DTO.DistrictDTO;
 public class AddressMapping {
     public static AddressDTO toDTO(Address address)
     {
-        return new AddressDTO(address.getId(),
+        return address == null ? null : new AddressDTO(address.getId(),
                 address.getRegion_id(),
                 address.getDistrict_id(),
                 address.getStreet(),
@@ -18,7 +18,7 @@ public class AddressMapping {
 
     public static Address toEntity(AddressDTO addressDTO)
     {
-        return new Address(addressDTO.getId(),
+        return addressDTO==null ? null :new Address(addressDTO.getId(),
                 addressDTO.getRegion_id(),
                 addressDTO.getDistrict_id(),
                 addressDTO.getStreet(),
@@ -34,7 +34,7 @@ public class AddressMapping {
         address.setStreet(addressDTO.getStreet());
         address.setHomenumber(addressDTO.getHomenumber());
         address.setOrient(addressDTO.getOrient());
-        return address;
+        return addressDTO==null ? null :address;
     }
     public static AddressDTO setDTO(Address address,AddressDTO addressDTO)
     {
@@ -44,6 +44,6 @@ public class AddressMapping {
         addressDTO.setStreet(address.getStreet());
         addressDTO.setHomenumber(address.getHomenumber());
         addressDTO.setOrient(address.getOrient());
-        return addressDTO;
+        return address==null ? null :addressDTO;
     }
 }

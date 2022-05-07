@@ -17,22 +17,25 @@ import java.util.List;
 public class AddressResource {
     private final AddressService addressService;
     //sout all info in region
-    @GetMapping("getall")
+    @GetMapping("get-all")
     public ResponseDTO<List<AddressDTO>> getAll()
     {
-        return addressService.findall();
+        return addressService.findAll();
     }
 
 
     //sout region by id
-    @GetMapping("getbyid")
-    public ResponseDTO<AddressDTO>getAll(@RequestParam Integer id) {return addressService.findbyid(id);}
+    @GetMapping("get-by-id")
+    public ResponseDTO<AddressDTO>getAll(@RequestParam Integer id) {return addressService.findById(id);}
 
     //add info in region
     @PostMapping("add")
-    public ResponseDTO<AddressDTO> add(@RequestBody AddressDTO addressDTO) {return addressService.addnew(addressDTO);}
+    public ResponseDTO<AddressDTO> add(@RequestBody AddressDTO addressDTO) {
+        return addressService.addNew(addressDTO);
+    }
     //update info region
-//    @PutMapping ("update")
-//    public ResponseDTO<AddressDTO> update(@RequestBody AddressDTO addressDTO) {return addressService.update(addressDTO);}
+    @PutMapping ("update")
+    public ResponseDTO<AddressDTO> update(@RequestBody AddressDTO addressDTO) {
+        return addressService.update(addressDTO);}
 
 }

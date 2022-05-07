@@ -8,16 +8,16 @@ import uz.yt.springdata.DTO.PublisherDTO;
 public class PublisherMapping {
     public static PublisherDTO toDTO(Publisher publisher)
     {
-        return new PublisherDTO(publisher.getId(),
+        return publisher==null ? null :new PublisherDTO(publisher.getId(),
                 publisher.getName(),
-                publisher.getAdres_id());
+                AddressMapping.toDTO(publisher.getAddress()));
     }
 
     public static Publisher toEntity(PublisherDTO publisherDTO)
     {
-        return new Publisher(publisherDTO.getId(),
+        return publisherDTO==null ? null : new Publisher(publisherDTO.getId(),
                 publisherDTO.getName(),
-                publisherDTO.getAdres_id());
+                AddressMapping.toEntity(publisherDTO.getAddressDTO()));
 
     }
 
@@ -25,14 +25,14 @@ public class PublisherMapping {
     {
         publisher.setId(publisherDTO.getId());
         publisher.setName(publisherDTO.getName());
-        publisher.setAdres_id(publisherDTO.getAdres_id());
-        return publisher;
+        publisher.setAddress(AddressMapping.toEntity(publisherDTO.getAddressDTO()));
+        return publisherDTO ==null ? null :publisher;
     }
     public static PublisherDTO setDTO(Publisher publisher,PublisherDTO publisherDTO)
     {
         publisherDTO.setId(publisher.getId());
         publisherDTO.setName(publisher.getName());
-        publisherDTO.setAdres_id(publisher.getAdres_id());
-        return publisherDTO;
+        publisherDTO.setAddressDTO(AddressMapping.toDTO(publisher.getAddress()));
+        return publisher==null ? null :publisherDTO;
     }
 }

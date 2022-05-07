@@ -16,7 +16,7 @@ import java.util.List;
 public class DistrictResource {
     private final DistrictService districtService;
     //sout all info in region
-    @GetMapping("getall")
+    @GetMapping("get-all")
     public ResponseDTO<List<DistrictDTO>> getAll()
     {
         return districtService.findall();
@@ -24,12 +24,12 @@ public class DistrictResource {
 
 
     //sout region by id
-    @GetMapping("getbyid")
-    public ResponseDTO<DistrictDTO>getAll(@RequestParam Integer id) {return districtService.findbyid(id);}
+    @GetMapping("get-by-id")
+    public ResponseDTO<DistrictDTO>getAll(@RequestParam Integer id) {return districtService.findById(id);}
 
     //add info in region
     @PostMapping("add")
-    public ResponseDTO<DistrictDTO> add(@RequestBody DistrictDTO districtDTO) {return districtService.addnew(districtDTO);}
+    public ResponseDTO<DistrictDTO> add(@RequestBody DistrictDTO districtDTO) {return districtService.addNew(districtDTO);}
     //update info region
     @PutMapping ("update")
     public ResponseDTO<DistrictDTO> update(@RequestBody DistrictDTO districtDTO) {return districtService.update(districtDTO);}

@@ -19,12 +19,12 @@ public class AuthorResource {
     @GetMapping("getall")
     public ResponseDTO<List<AuthorDTO>>getAll()
     {
-        return authorService.getall();
+        return authorService.getAll();
     }
     @GetMapping("getbyid")
     public ResponseDTO<AuthorDTO>getAll(@RequestParam Integer id)
     {
-        return authorService.getoneByid(id);
+        return authorService.getOneById(id);
     }
 
 
@@ -43,7 +43,7 @@ public class AuthorResource {
     @DeleteMapping ("delete")
     public ResponseDTO<AuthorDTO> delete(@RequestParam Integer id)
     {
-        return authorService.deleteAuthorbyId(id);
+        return authorService.deleteAuthorById(id);
     }
 
 
